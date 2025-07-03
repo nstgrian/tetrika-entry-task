@@ -15,8 +15,10 @@ def merge_intervals(timestamps: list[int]) -> list[tuple[int, int]]:
             if current_start != current_end:
                 merged.append((current_start, current_end))
             current_start, current_end = start, end
+
     if current_start != current_end:
         merged.append((current_start, current_end))
+
     return merged
 
 

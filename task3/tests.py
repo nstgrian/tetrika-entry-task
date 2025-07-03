@@ -3,26 +3,22 @@ from solution import appearance, merge_intervals
 
 
 class TestMergeFunction(unittest.TestCase):
-    def test_merge_non_overlapping(self):
-        non_overlapping = [-1, 0, 1, 2, 3, 4, 5, 6, 99, 100]
+    def test_merge_no_overlap(self):
+        no_overlap = [-1, 0, 1, 2, 3, 4, 5, 6, 99, 100]
         expected = [(-1, 0), (1, 2), (3, 4), (5, 6), (99, 100)]
-        merged = merge_intervals(non_overlapping)
-        self.assertEqual(
-            expected,
-            merged,
-            ""
-        )
+        merged = merge_intervals(no_overlap)
+        self.assertEqual(expected, merged)
 
     def test_zero_length(self):
-        zero_length = [-1, -1, 0 , 1, 2, 2, 3, 4, 4, 4]
+        zero_length = [-1, -1, 0, 1, 2, 2, 3, 4, 4, 4]
         expected = [(0, 1), (3, 4)]
         merged = merge_intervals(zero_length)
         self.assertEqual(expected, merged)
 
-    def test_merge_partially_overlapping(self):
-        partially_overlapping = [-1, 1, 1, 2, 3, 5, 4, 7, 6, 8, 9, 10]
+    def test_merge_partial_overlap(self):
+        partial_overlap = [-1, 1, 1, 2, 3, 5, 4, 7, 6, 8, 9, 10]
         expected = [(-1, 2), (3, 8), (9, 10)]
-        merged = merge_intervals(partially_overlapping)
+        merged = merge_intervals(partial_overlap)
         self.assertEqual(expected, merged)
 
     def test_merge_one_inside_another(self):
